@@ -17,3 +17,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+
+      # auto update Lambda
+      - echo Updating Lambda function...
+      - aws lambda update-function-code --function-name $FUNCTION_NAME --image-uri $REPOSITORY_URI:$IMAGE_TAG
+      - echo Lambda update initiated!
