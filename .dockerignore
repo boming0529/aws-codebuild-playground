@@ -1,0 +1,6 @@
+.git
+buildspec.yml
+README.md
+.gitignore
+.vscode
+.venv

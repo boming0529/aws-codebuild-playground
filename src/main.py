@@ -1,6 +1,6 @@
 import sys
 
-def handler(event, context):
+def lambda_handler(event, context):
     print("--------------------------------------------------")
     print("🚀 Hello from AWS CodeBuild (ARM64)!")
     print(f"🐍 Python Version: {sys.version}")
@@ -11,7 +11,3 @@ def handler(event, context):
         "statusCode": 200,
         "body": "Hello from Lambda!"
     }
-
-
-if __name__ == "__main__":
-    handler()
