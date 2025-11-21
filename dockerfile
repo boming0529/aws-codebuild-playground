@@ -6,7 +6,7 @@ COPY pyproject.toml .
 
 # COPY pyproject.toml uv.lock* ./
 # RUN uv pip install --target "${LAMBDA_TASK_ROOT}" --no-dev .
-RUN uv pip install -r pyproject.toml --system --no-cache
+# RUN uv pip install -r pyproject.toml --system --no-cache
 
 COPY src/ ${LAMBDA_TASK_ROOT}
 
