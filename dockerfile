@@ -1,11 +1,13 @@
 FROM public.ecr.aws/lambda/python:3.13-arm64
 
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
 COPY pyproject.toml .
 
-RUN uv pip install -r pyproject.toml --system
+# COPY pyproject.toml uv.lock* ./
+# RUN uv pip install --target "${LAMBDA_TASK_ROOT}" --no-dev .
+RUN uv pip install --target "${LAMBDA_TASK_ROOT}" --no-dev .
 
 COPY src/ ${LAMBDA_TASK_ROOT}
 
-CMD ["main.lambda_handler"]
+CMD ["main.handler"]
