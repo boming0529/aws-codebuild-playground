@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/python:3.12
+FROM public.ecr.aws/lambda/python:3.13
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
@@ -8,4 +8,4 @@ RUN uv pip install -r pyproject.toml --system
 
 COPY main.py ${LAMBDA_TASK_ROOT}
 
-CMD ["python", "main.py"]
+CMD ["main.handler"]
